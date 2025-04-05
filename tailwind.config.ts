@@ -52,11 +52,21 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
+		  container: {
+			center: true,
+			padding: '1rem',
+			screens: {
+				'2xl': '1400px',
+				'xl': '1280px',
+				'lg': '1024px',
+				'md': '768px',
+			}
+		},
+		borderRadius: {
+			lg: 'var(--radius)',
+			md: 'calc(var(--radius) - 8px)',
+			sm: 'calc(var(--radius) - 4px)'
+		},
   	}
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
