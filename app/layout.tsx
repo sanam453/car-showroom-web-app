@@ -11,6 +11,7 @@ const latoSans = Lato({
 });
 
 import type { Metadata } from "next";
+import Navbar from "@/components/navbar";
 
 // @metadata
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${latoSans.variable} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
