@@ -21,7 +21,7 @@ export default function Navbar() {
             className="size-12"
           />
         </Link>
-        <Button size="sm" variant="outline">
+        <Button size="sm">
           Sign In
         </Button>
       </div>
@@ -37,7 +37,7 @@ export default function Navbar() {
             />
           </Link>
           <SheetTrigger asChild>
-            <Button size="sm" variant="outline">
+            <Button size="sm">
               Sign In
             </Button>
           </SheetTrigger>
