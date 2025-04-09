@@ -45,8 +45,9 @@ export default function ServiceCard() {
         {DATA.map(({ title, description, buttonText }, index) => (
           <Card
             key={index}
-            className="relative bg-background border border-primary/15 hover:border-primary/20 transition ease-in-out bg-[radial-gradient(ellipse_at_top_center,rgba(120,65,1,.1)_0%,transparent_60%)] hover:bg-[radial-gradient(ellipse_at_top_center,rgba(120,65,1,.8)_0%,transparent_60%)]"
+            className="relative bg-background border border-primary/15 hover:border-primary/20 transition ease-in-out group overflow-hidden"
           >
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,rgb(120,65,2)_0%,transparent_60%)] w-full h-full scale-150 blur-xl -translate-y-1/4 opacity-25 group-hover:opacity-80 transition-opacity duration-300" />
             <CardHeader>
               <CardTitle className="text-2xl font-medium text-secondary-foreground">
                 {title}
