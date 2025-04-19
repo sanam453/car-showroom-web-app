@@ -26,6 +26,7 @@ export function ListingSearch({ currentSearch }: { currentSearch: string }) {
         scroll: false,
       });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   return (

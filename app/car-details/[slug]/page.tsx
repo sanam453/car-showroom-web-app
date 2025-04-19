@@ -1,9 +1,15 @@
 import Image from "next/image";
 import { getCarsBySlug } from "@/lib/actions/car-market";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { CalendarFold, CarFront, Earth, Milestone, Receipt } from "lucide-react";
+import {
+  CalendarFold,
+  CarFront,
+  Earth,
+  Milestone,
+  Receipt,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export default async function CarDetails({
   params,
@@ -91,8 +97,7 @@ export default async function CarDetails({
             </div>
           </div>
           <div className="flex items-baseline space-x-2">
-            
-            {/* <Badge className="bg-green-500 text-white">In Stock</Badge> */}
+            <Badge className="bg-green-500 text-white">In Stock</Badge>
           </div>
         </div>
       </div>

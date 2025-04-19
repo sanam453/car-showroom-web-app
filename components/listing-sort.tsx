@@ -33,7 +33,7 @@ const sorts = [
   },
 ];
 
-export function ListingSort({ currentSort }: { currentSort: Sort }) {
+export function ListingSort({ currentSort }: { currentSort: any }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [sort, setSort] = React.useState(currentSort);
@@ -53,13 +53,14 @@ export function ListingSort({ currentSort }: { currentSort: Sort }) {
         scroll: false,
       });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort]);
 
   return (
     <div data-pending={isPending ? true : undefined}>
       <Select
         value={sort}
-        onValueChange={(value: Sort) =>
+        onValueChange={(value: any) =>
           value === "default" ? setSort("") : setSort(value)
         }
       >
