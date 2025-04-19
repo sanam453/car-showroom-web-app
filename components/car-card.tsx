@@ -1,21 +1,26 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
-import { getCarMarketData } from "@/lib/actions/car-market";
+import { getCarMarketData, Sort } from "@/lib/actions/car-market";
+import { ListingPagination } from "./listing-pagination";
+import { ListingSearch } from "./listing-search";
+import { ListingSort } from "./listing-sort";
 
-export default async function CarCard() {
+export default async function CarCard({currentPage, currentSearch, currentSort} : {
+  currentPage: number, currentSearch: string, currentSort: Sort}) {
 
-  const { records } = await getCarMarketData();
+  const records = await getCarMarketData({page: currentPage, search: currentSearch, sort: currentSort});  
 
   return (
-    <div className="container mx-auto text-center my-36">
-      <h1 className="mx-auto md:text-5xl text-secondary-foreground text-3xl max-w-5xl [text-wrap:_balance] !leading-tight">
-        Most Popular Cars Deals
-      </h1>
-      <p className="max-w-3xl text-lg mx-auto text-balance mt-4 text-secondary-foreground/80">
-        Find the best car deals with our listings. Browse a wide range of
-        options and take advantage of the latest offers.
-      </p>
+    <div className="container mx-auto my-12 group">
+      <div className="flex items-center gap-4 flex-wrap">
+        <div>
+          <h1 className="text-3xl font-semibold mb-2">Car Catalogue</h1>
+          <p>Explore the cars you might like</p>
+        </div>
+        <ListingSearch currentSearch={currentSearch} />
+        <ListingSort currentSort={currentSort} />
+      </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mt-10">
         {records?.map((record: Record<string, string>) => (
           <Card
@@ -23,13 +28,17 @@ export default async function CarCard() {
             className="overflow-hidden group-has-[[data-pending]]:animate-pulse"
           >
             <CardHeader>
-              <Image
-                src="/car.png"
-                alt="Car"
-                width={1024}
-                height={1024}
-                className="w-full h-full object-cover object-center"
-              />
+            <Image
+                  src={
+                    record.photo.startsWith("//")
+                      ? "https://placehold.co/600x400/png"
+                      : record.photo
+                  }
+                  alt={`${record.make} ${record.model}`}
+                  width={768}
+                  height={768}
+                  className="w-full h-64 object-cover object-center"
+                />
             </CardHeader>
             <CardContent className="mt-6">
               <CardTitle className="text-xl">
@@ -43,6 +52,7 @@ export default async function CarCard() {
           </Card>
         ))}
       </div>
+      <ListingPagination currentPage={currentPage} />
     </div>
   );
 }

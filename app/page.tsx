@@ -3,13 +3,20 @@ import Hero from "@/components/hero";
 import ServiceCard from "@/components/service-card";
 import Trust from "@/components/trust";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<any>
+}) {
+
+  const { page, search, sort } = await searchParams;
+
   return (
     <main>
       <Hero />
       <Trust />
       <ServiceCard />
-      <CarCard />
+      <CarCard currentPage={page || 1} currentSearch={search} currentSort={sort} />
     </main>
   );
 }
