@@ -8,7 +8,7 @@ const sortFilters = {
   priceDesc: "price:desc",
   yearAsc: "year:asc",
   yearDesc: "year:desc",
-}
+};
 
 export type Sort = keyof typeof sortFilters;
 
@@ -34,8 +34,7 @@ export async function getCarMarketData({
       baseUrl.searchParams.append("make", search);
     }
 
-
-    if(sort) {
+    if (sort) {
       baseUrl.searchParams.append("sort_filter", sortFilters[sort]);
     }
 
@@ -61,6 +60,7 @@ export async function getCarMarketData({
         dealer: car.dealerName,
         url: car.clickoffUrl,
         gallary: car.photoUrls,
+        stateName: car.state,
       }));
 
       return cars;
@@ -69,4 +69,42 @@ export async function getCarMarketData({
     console.error("Error fetching car market data:", error);
     return null;
   }
+}
+
+export async function getCarsBySlug(slug: string) {
+  try {
+    const baseUrl = new URL(`${apiBaseUrl}/listings/${slug}`);
+
+    const request = await fetch(baseUrl.toString(), {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+    });
+
+    const response = await request.json();
+
+    if (response) {
+      const car = {
+        id: response.id,
+        color: response.displayColor,
+        year: response.year,
+        make: response.make,
+        model: response.model,
+        price: response.price,
+        mileage: response.mileage,
+        photo: response.primaryPhotoUrl,
+        dealer: response.dealerName,
+        url: response.clickoffUrl,
+        gallary: response.photoUrls,
+        stateName: response.state,
+        engineType: response.engine,
+        transmissionType: response.transmission,
+      };
+
+      return car;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return null;
 }
