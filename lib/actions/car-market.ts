@@ -97,7 +97,6 @@ export async function getCarsBySlug(slug: string) {
         url: response.clickoffUrl,
         gallary: response.photoUrls,
         stateName: response.state,
-        engineType: response.engine,
         transmissionType: response.transmission,
       };
 
