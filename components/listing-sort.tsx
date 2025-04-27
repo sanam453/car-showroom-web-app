@@ -57,14 +57,14 @@ export function ListingSort({ currentSort }: { currentSort: any }) {
   }, [sort]);
 
   return (
-    <div data-pending={isPending ? true : undefined}>
+    <div className="w-full md:max-w-64" data-pending={isPending ? true : undefined}>
       <Select
         value={sort}
         onValueChange={(value: any) =>
           value === "default" ? setSort("") : setSort(value)
         }
       >
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-full">
           <SelectValue placeholder="Sort Cars" />
         </SelectTrigger>
         <SelectContent>

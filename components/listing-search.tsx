@@ -32,7 +32,7 @@ export function ListingSearch({ currentSearch }: { currentSearch: string }) {
   return (
     <div
       data-pending={isPending ? true : undefined}
-      className="ml-auto relative w-full max-w-64"
+      className="sm:ml-auto relative w-full md:max-w-64"
     >
       <Input
         type="search"

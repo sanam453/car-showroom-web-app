@@ -36,14 +36,16 @@ export default async function CarCard({
   });
 
   return (
-    <div className="container mx-auto my-12 group">
-      <div className="flex items-center gap-4 flex-wrap">
+    <div className="my-12 group">
+      <div className="items-center gap-4 grid md:grid-cols-2 grid-cols-1">
         <div>
           <h1 className="text-3xl font-semibold mb-2">Car Catalogue</h1>
           <p>Explore the cars you might like</p>
         </div>
-        <ListingSearch currentSearch={currentSearch} />
-        <ListingSort currentSort={currentSort} />
+        <div className="w-full flex gap-4 sm:justify-end justify-normal">
+          <ListingSearch currentSearch={currentSearch} />
+          <ListingSort currentSort={currentSort} />
+        </div>
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mt-10">
         {records?.map((record: Record<string, string>) => (

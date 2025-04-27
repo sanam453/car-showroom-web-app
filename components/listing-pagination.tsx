@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+
+// components
 import {
   Pagination,
   PaginationContent,
@@ -9,6 +11,8 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+
+// hooks
 import { useRouter, useSearchParams } from "next/navigation";
 
 export function ListingPagination({ currentPage }: { currentPage: number }) {
@@ -18,8 +22,8 @@ export function ListingPagination({ currentPage }: { currentPage: number }) {
   const [page, setPage] = React.useOptimistic(Number(currentPage));
 
   const pageNumber = React.useMemo(() => {
-    if (page > 10) {
-      return 10;
+    if (page > 6) {
+      return 6;
     } else if (page < 1) {
       return 1;
     } else {
@@ -41,7 +45,7 @@ export function ListingPagination({ currentPage }: { currentPage: number }) {
   }
 
   return (
-    <div data-pending={isPending ? true : undefined} className="mt-8">
+    <div data-pending={isPending ? true : undefined} className="mt-8 w-full">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -50,7 +54,7 @@ export function ListingPagination({ currentPage }: { currentPage: number }) {
               onClick={() => handlePageChange(page - 1)}
             />
           </PaginationItem>
-          {Array.from({ length: 10 }, (_, i) => {
+          {Array.from({ length: 6 }, (_, i) => {
             const pageNum = i + 1;
 
             return (
@@ -66,7 +70,7 @@ export function ListingPagination({ currentPage }: { currentPage: number }) {
           })}
           <PaginationItem>
             <PaginationNext
-              aria-disabled={pageNumber === 10}
+              aria-disabled={pageNumber === 6}
               onClick={() => handlePageChange(page + 1)}
             />
           </PaginationItem>

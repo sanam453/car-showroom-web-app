@@ -33,7 +33,7 @@ const DATA = [
 
 export default function ServiceCard() {
   return (
-    <div className="container mx-auto text-center my-36">
+    <div className="text-center my-36">
       <h1 className="mx-auto md:text-5xl text-secondary-foreground text-3xl max-w-5xl [text-wrap:_balance] !leading-tight">
         Our Services
       </h1>
@@ -41,7 +41,7 @@ export default function ServiceCard() {
         Enjoy a seamless car-buying experience with our expert services, from
         finding your car to after-sales support.
       </p>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-20 gap-8">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-20 gap-4">
         {DATA.map(({ title, description, buttonText }, index) => (
           <Card
             key={index}
