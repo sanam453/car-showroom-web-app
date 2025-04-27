@@ -1,17 +1,24 @@
+// utils
+import { getCarMarketData, Sort } from "@/lib/actions/car-market";
+import { ListingPagination } from "./listing-pagination";
+import { ListingSearch } from "./listing-search";
+import { ListingSort } from "./listing-sort";
+
+// components
+import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { getCarMarketData, Sort } from "@/lib/actions/car-market";
-import { ListingPagination } from "./listing-pagination";
-import { ListingSearch } from "./listing-search";
-import { ListingSort } from "./listing-sort";
-import Link from "next/link";
+
+// icons
+import { ArrowUpRight } from "lucide-react";
 
 export default async function CarCard({
   currentPage,
@@ -40,35 +47,48 @@ export default async function CarCard({
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mt-10">
         {records?.map((record: Record<string, string>) => (
-          <Link href={`/car-details/${record.vin}`} key={record.id}>
-            <Card
-              key={record.id}
-              className="overflow-hidden group-has-[[data-pending]]:animate-pulse"
-            >
-              <CardHeader>
-                <Image
-                  src={
-                    record.photo.startsWith("//")
-                      ? "https://placehold.co/600x400/png"
-                      : record.photo
-                  }
-                  alt={`${record.make} ${record.model}`}
-                  width={768}
-                  height={768}
-                  className="w-full h-64 object-cover object-center"
-                />
-              </CardHeader>
-              <CardContent className="mt-6">
-                <CardTitle className="text-xl">{record.make}</CardTitle>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <span className="text-lg font-bold text-primary">
-                  {record.id}
+          <Card
+            key={record.id}
+            className="overflow-hidden group-has-[[data-pending]]:animate-pulse"
+          >
+            <CardHeader className="p-0">
+              <Image
+                src={
+                  record.photo.startsWith("//")
+                    ? "https://placehold.co/600x400/png"
+                    : record.photo
+                }
+                alt={`${record.make} ${record.model}`}
+                width={768}
+                height={768}
+                className="w-full h-56 object-cover object-center"
+              />
+            </CardHeader>
+            <CardContent className="mt-6">
+              <div className="flex justify-between mb-4">
+                <CardTitle className="text-xl flex gap-2">
+                  {record.make},<p>{record.stateName}</p>
+                </CardTitle>
+                <span className="px-4 py-1 !rounded-sm text-sm border border-primary">
+                  {record.active ? "Active" : "Inactive"}
                 </span>
-                <Button size="sm">{record.make}</Button>
-              </CardFooter>
-            </Card>
-          </Link>
+              </div>
+              <CardDescription>
+                The car is a marvel of engineering, combining performance and
+                style. It offers advanced features and cutting-edge technology
+                for modern drivers.
+              </CardDescription>
+            </CardContent>
+            <CardFooter className="flex items-center justify-between">
+              <span className="text-lg font-bold">{record.price}</span>
+              <Link href={`/car-details/${record.vin}`}>
+                <Button size="sm" className="flex items-center gap-2">
+                  More Details
+                  <ArrowUpRight className="size-3" />
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
         ))}
       </div>
       <ListingPagination currentPage={currentPage} />

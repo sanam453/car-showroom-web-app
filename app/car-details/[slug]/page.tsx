@@ -17,6 +17,8 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
+import { FavoriteButton } from "@/components/favorite-button";
+
 // icons
 import {
   CalendarFold,
@@ -114,12 +116,11 @@ export default async function CarDetails({
         </div>
         <div>
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl md:text-3xl font-semibold uppercase">
+            <h1 className="text-2xl md:text-3xl font-semibold uppercase flex gap-3">
               {record.model}
+              <p className="text-lg mt-2 text-primary">{formattedPrice}</p>
             </h1>
-            <h1 className="text-2xl md:text-3xl font-semibold text-primary">
-              {formattedPrice}
-            </h1>
+            <FavoriteButton car={record} />
           </div>
           <p className="mb-8 text-balance">
             The {record.year} {record.make}, finished in a sleek {record.color},

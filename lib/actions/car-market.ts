@@ -61,6 +61,9 @@ export async function getCarMarketData({
         url: car.clickoffUrl,
         gallary: car.photoUrls,
         stateName: car.state,
+        cityName: car.city,
+        active: car.active,
+        updatedAt: car.updatedAt,
       }));
 
       return cars;
