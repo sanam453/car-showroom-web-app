@@ -1,17 +1,13 @@
+// components
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 const TRUST_LOGOS = [
   "/Chrysler.svg",
   "/Honda.svg",
-  // "/Hyundai.svg",
-  // "/c.svg",
-  // "/Jaguar.svg",
   "/Mercedes.svg",
   "/Maybach.svg",
   "/Mitsubishi.svg",
-  // "/Renault.svg",
-  // "/Tesla.svg",
 ];
 
 export default function Trust() {

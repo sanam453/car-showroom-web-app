@@ -75,7 +75,7 @@ export default async function CarCard({
                   {record.active ? "Active" : "Inactive"}
                 </span>
               </div>
-              <CardDescription>
+              <CardDescription className="text-foreground text-base">
                 The car is a marvel of engineering, combining performance and
                 style. It offers advanced features and cutting-edge technology
                 for modern drivers.
