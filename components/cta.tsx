@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Cta() {
   return (
-    <section className="my-40 bg-primary rounded-lg">
+    <section className="my-32 bg-primary rounded-lg">
       <div className="flex justify-between items-center">
         <div className="sm:pl-20 pl-6 lg:py-0 py-10">
           <p className="xl:text-7xl md:text-4xl text-xl max-w-xl !leading-tight mb-2">

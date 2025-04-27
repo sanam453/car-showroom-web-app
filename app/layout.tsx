@@ -10,10 +10,12 @@ const latoSans = Lato({
   weight: ["400", "700", "900"],
 });
 
-import type { Metadata } from "next";
+// components
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 // @metadata
+import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Car Showroom",
   description: "A simple car show web app",
@@ -31,6 +33,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
