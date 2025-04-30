@@ -32,9 +32,10 @@ import { CirclePlus, CircleMinus } from "lucide-react";
 export default async function CarDetails({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  
   const record = await getCarsBySlug(slug);
 
   if (!record) {
